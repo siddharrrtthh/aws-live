@@ -1,3 +1,12 @@
+
+
+First, retrieve the source code by visiting https://lnkd.in/dRs6J9Wt. Next, set up an RDS MySQL Database, establish an S3 bucket,
+and create an EC2 instance running Ubuntu. After that, generate a Config.py file, install the necessary utilities on the EC2 instance,
+and finally, clone the Git repository onto the EC2 instance.
+
+
+Commands for installation utilities on ec2 :
+
 sudo apt-get update
 # For Sql-client
 sudo apt-get install mysql-client
@@ -11,3 +20,5 @@ sudo apt-get install python3-boto3
 
 # for running application
 sudo python3 Empapp.py
+
+
