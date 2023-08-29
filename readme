@@ -1,5 +1,3 @@
-
-
 First, retrieve the source code by visiting https://lnkd.in/dRs6J9Wt. Next, set up an RDS MySQL Database, establish an S3 bucket,
 and create an EC2 instance running Ubuntu. After that, generate a Config.py file, install the necessary utilities on the EC2 instance,
 and finally, clone the Git repository onto the EC2 instance.
