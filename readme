@@ -1,5 +1,7 @@
 Employee Management Application Deployment Guide
 
+![Image](https://github.com/user-attachments/assets/c3067919-6347-46d1-83cc-9d4e0adeb4ab)
+
 This guide walks you through setting up and deploying the Employee Management Application using AWS services, including RDS (MySQL), S3, and EC2.
 
 ---
