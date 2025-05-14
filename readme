@@ -1,22 +1,90 @@
-First, retrieve the source code by visiting https://lnkd.in/dRs6J9Wt. Next, set up an RDS MySQL Database, establish an S3 bucket,
-and create an EC2 instance running Ubuntu. After that, generate a Config.py file, install the necessary utilities on the EC2 instance,
-and finally, clone the Git repository onto the EC2 instance.
+Employee Management Application Deployment Guide
 
+This guide walks you through setting up and deploying the Employee Management Application using AWS services, including RDS (MySQL), S3, and EC2.
 
-Commands for installation utilities on ec2 :
+---
+
+## Prerequisites
+
+* AWS account with appropriate permissions for EC2, RDS, and S3.
+* Basic knowledge of Python, Flask, and AWS CLI.
+* Git installed locally or on your EC2 instance.
+
+---
+
+## Step 1: Retrieve Source Code
+
+Clone the repository containing the application code:
+
+git clone [https://lnkd.in/dRs6J9Wt](https://lnkd.in/dRs6J9Wt)
+
+---
+
+## Step 2: Set Up AWS Infrastructure
+
+### 1. RDS MySQL Database
+
+1. Launch a new MySQL RDS instance.
+2. Note the following:
+
+   * Endpoint
+   * Username
+   * Password
+   * Database name
+3. Ensure the security group allows inbound traffic on **port 3306** from the EC2 instance.
+
+### 2. S3 Bucket
+
+1. Create a new S3 bucket to store any application-related data (e.g., images or files).
+2. Note the bucket name for later use.
+
+### 3. EC2 Instance
+
+1. Launch an **Ubuntu** EC2 instance.
+2. Allow inbound SSH (port 22) and HTTP (port 80) access.
+3. SSH into your instance to proceed with the setup.
+
+---
+
+## Step 3: Install Dependencies on EC2
+
+Run the following commands to install the necessary utilities:
 
 sudo apt-get update
-# For Sql-client
 sudo apt-get install mysql-client
-
-# For python and related frameworks
-
 sudo apt-get install python3
 sudo apt-get install python3-flask
 sudo apt-get install python3-pymysql
 sudo apt-get install python3-boto3
 
-# for running application
+---
+
+## Step 4: Configure the Application
+
+Create a file named `Config.py` in the project directory and add the following content:
+
+MYSQL\_HOST = 'your-rds-endpoint'
+MYSQL\_USER = 'your-username'
+MYSQL\_PASSWORD = 'your-password'
+MYSQL\_DB = 'your-database-name'
+S3\_BUCKET = 'your-s3-bucket-name'
+
+**Replace the placeholder values with your actual AWS RDS and S3 configuration.**
+
+---
+
+## Step 5: Run the Application
+
+In the project directory, start the Flask application using:
+
 sudo python3 Empapp.py
 
+The app should now be running and accessible via your EC2 instance’s public IP address.
 
+---
+
+## Notes
+
+* Ensure your EC2 instance has IAM permissions to access the S3 bucket (via IAM role or configured AWS credentials).
+* Consider using `screen` or `tmux` to keep your application running in the background.
+* For production deployment, use a web server like **Nginx** and **uWSGI** for better scalability and reliability.
